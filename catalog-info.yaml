@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: santhoshvernekar-poi-map-app-dev
+  annotations:
+    argocd/app-name: santhoshvernekar-poi-map-app-dev
+    backstage.io/kubernetes-id: santhoshvernekar-poi-map-app
+    backstage.io/kubernetes-namespace: santhoshvernekar
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-aro24/santhoshvernekar-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.kovj5vhc.eastus.aroapp.io/dev-pipelines/ns/santhoshvernekar/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.kovj5vhc.eastus.aroapp.io/k8s/ns/santhoshvernekar/deployments/santhoshvernekar-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.kovj5vhc.eastus.aroapp.io/#https://github.com/rhdh-aro24/santhoshvernekar-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://santhoshvernekar-poi-map-app-santhoshvernekar.apps.kovj5vhc.eastus.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:santhoshvernekar"
+  system: workshop-system-santhoshvernekar
+  consumesApis:
+    - gateway-api-santhoshvernekar
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-santhoshvernekar
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:santhoshvernekar"
